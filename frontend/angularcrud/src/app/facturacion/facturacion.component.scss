@@ -1,0 +1,41 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+body {
+  font-family: var(--font-family);
+}
+
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  margin-bottom: 16px;
+}
+
+.card-content a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}

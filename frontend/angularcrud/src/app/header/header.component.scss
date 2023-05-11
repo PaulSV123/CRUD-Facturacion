@@ -1,0 +1,72 @@
+@import "../../../node_modules/primeicons/primeicons.css";
+
+:host {
+    font-style: italic;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+:host body{
+    padding: 1%;
+}
+
+:host header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    background-color: #80753f;
+    font-weight: 600;
+}
+:host menu {
+    color: rgba(234, 230, 230, 0.771);
+    margin: 58px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    margin-right: 1.5rem;
+    font-size: 20px;
+    color: rgba(234, 230, 230, 0.771);
+    text-shadow: none;
+  }
+
+  /* Estilo cuando el cursor está encima del párrafo */
+  p:hover {
+    text-shadow: 0 0 10px white;
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+
