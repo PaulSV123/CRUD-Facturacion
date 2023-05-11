@@ -73,7 +73,7 @@
       </div>
       <div>
         <label for="Nombre_Cliente">Nombre_Cliente:</label>
-        <input type="text" id="Fecha" formControlName="Nombre_Cliente">
+        <input type="text" id="Nombre_Cliente" formControlName="Nombre_Cliente">
       </div>
       <div>
         <label for="Direccion_Cliente">Direccion_Cliente:</label>
@@ -101,6 +101,8 @@
     </div>
   </form>
 
+  <br/>
+
   <form [formGroup]="formDelete" (submit)="eliminarFactura()">
     <div class="form-group">
       <!-- <textarea formControlName="Fecha">
@@ -118,6 +120,53 @@
   <!-- <button (click)="EnviarData()">Crear Factura</button> -->
 
   <!-- <button (click)="eliminarFactura()">Eliminar Factura</button> -->
+
+  <br/>
+
+  <form [formGroup]="formActualizar" (submit)="actualizarFactura()">
+    <div class="form-group">
+      <div>
+        <label for="Id_factura">ID de la Factura:</label>
+        <input type="text" id="Id_factura" formControlName="Id_factura">
+      </div>
+      <div>
+        <label for="Fecha">Fecha:</label>
+        <input type="text" id="Fecha" formControlName="Fecha">
+      </div>
+      <div>
+        <label for="Cliente">Cliente:</label>
+        <input type="number" id="Cliente" formControlName="Cliente">
+      </div>
+      <div>
+        <label for="Nombre_Cliente">Nombre_Cliente:</label>
+        <input type="text" id="Nombre_Cliente" formControlName="Nombre_Cliente">
+      </div>
+      <div>
+        <label for="Direccion_Cliente">Direccion_Cliente:</label>
+        <input type="text" id="Direccion_Cliente" formControlName="Direccion_Cliente">
+      </div>
+      <div>
+        <label for="RUC_Cliente">RUC_Cliente:</label>
+        <input type="text" id="RUC_Cliente" formControlName="RUC_Cliente">
+      </div>
+      <div>
+        <label for="Sub_Total">Sub_Total:</label>
+        <input type="number" id="Sub_Total" formControlName="Sub_Total">
+      </div>
+      <div>
+        <label for="Iva_Cliente">Iva_Cliente:</label>
+        <input type="number" id="Iva_Cliente" formControlName="Iva_Cliente">
+      </div>
+      <div>
+        <label for="Total_Cliente">Total_Cliente:</label>
+        <input type="number" id="Total_Cliente" formControlName="Total_Cliente">
+      </div>
+      <div>
+        <button class="button">Editar Factura</button>
+      </div>
+    </div>
+  </form>
+
 
   <div class="card">
     <div class="card-content">
