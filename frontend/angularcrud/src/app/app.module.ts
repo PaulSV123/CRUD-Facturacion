@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonModule,
     TableModule,
     ReactiveFormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

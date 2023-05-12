@@ -75,17 +75,62 @@
     </div>
   </form>
 
-  <div class="card">
-    <div class="card-content">
-      <div style="text-align: center;">
-        <h3 *ngFor="let Factura_Id of facturas_detalles">Factura {{ Factura_Id.Id }} </h3>
-      </div>
-      <li *ngFor="let Descripcion_Detalle of facturas_detalles">{{ Descripcion_Detalle.Descripcion }}</li>
-      <li *ngFor="let PrecioUnitario_Detalle of facturas_detalles">{{ PrecioUnitario_Detalle.PrecioUnitario }}</li>
-      <li *ngFor="let Cantidad_Detalle of facturas_detalles">{{ Cantidad_Detalle.Cantidad }}</li>
-      <li *ngFor="let Subtotal_Detalle of facturas_detalles">{{ Subtotal_Detalle.Subtotal }}</li>
-    </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.Id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td mat-cell *matCellDef="let element">{{element.Descripcion}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="PrecioUnitario">
+      <th mat-header-cell *matHeaderCellDef>Precio Unitario</th>
+      <td mat-cell *matCellDef="let element">{{element.PrecioUnitario}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Cantidad">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element">{{element.Cantidad}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Subtotal">
+        <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+        <td mat-cell *matCellDef="let element">{{element.Subtotal}}</td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+
+  <div>
+    <h3>
+      Seleccion de Factura Detalles
+    </h3>
   </div>
+
+  <div *ngIf="!clickedRows.size">
+    Selecciona alguna factura y aparece aqui
+  </div>
+
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      {{clickedRow.Id}}
+      {{clickedRow.Descripcion}}
+      {{clickedRow.PrecioUnitario}}
+      {{clickedRow.Cantidad}}
+      {{clickedRow.Subtotal}}
+    </li>
+  </ul>
+
 </body>
 
 <router-outlet></router-outlet>

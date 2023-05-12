@@ -104,7 +104,7 @@
   </form>
 
 
-  <div class="card">
+  <!-- <div class="card">
     <div class="card-content">
       <div style="text-align: center;">
         <h3 *ngFor="let Factura_Id of facturas">Factura {{ Factura_Id.Id }} </h3>
@@ -118,7 +118,83 @@
       <li *ngFor="let Factura_Iva of facturas">{{ Factura_Iva.Iva }}</li>
       <li *ngFor="let Factura_Total of facturas">{{ Factura_Total.Total }}</li>
     </div>
+  </div> -->
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{element.Id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="FechaEmision">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Emision</th>
+      <td mat-cell *matCellDef="let element">{{element.FechaEmision}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="IdCliente">
+      <th mat-header-cell *matHeaderCellDef>ID del cliente</th>
+      <td mat-cell *matCellDef="let element">{{element.IdCliente}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="NombreCliente">
+      <th mat-header-cell *matHeaderCellDef>Nombre del cliente</th>
+      <td mat-cell *matCellDef="let element">{{element.NombreCliente}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DireccionCliente">
+        <th mat-header-cell *matHeaderCellDef>Direccion del Cliente</th>
+        <td mat-cell *matCellDef="let element">{{element.DireccionCliente}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="RucCliente">
+      <th mat-header-cell *matHeaderCellDef>RUC del Cliente</th>
+      <td mat-cell *matCellDef="let element">{{element.RucCliente}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Subtotal">
+      <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+      <td mat-cell *matCellDef="let element">{{element.Subtotal}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Iva">
+      <th mat-header-cell *matHeaderCellDef>Iva</th>
+      <td mat-cell *matCellDef="let element">{{element.Iva}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Total">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">{{element.Total}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+
+  <div>
+    <h3>
+      Seleccion de Factura Detalles
+    </h3>
   </div>
+
+  <div *ngIf="!clickedRows.size">
+    Selecciona alguna factura y aparece aqui
+  </div>
+
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      {{clickedRow.Id}}
+      {{clickedRow.Descripcion}}
+      {{clickedRow.PrecioUnitario}}
+      {{clickedRow.Cantidad}}
+      {{clickedRow.Subtotal}}
+    </li>
+  </ul>
 
 
 

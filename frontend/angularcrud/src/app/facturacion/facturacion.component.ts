@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-facturacion',
@@ -12,21 +13,15 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./facturacion.component.scss']
 })
 export class FacturacionComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'FechaEmision', 'IdCliente', 'NombreCliente', 'DireccionCliente', 'RucCliente',
+                                'Subtotal','Iva','Total'];
+  dataSource = new MatTableDataSource<any>([]);
+  clickedRows = new Set<any>();
+
   public facturas:any = [];
   public form: FormGroup | any;
   public formDelete: FormGroup | any;
   public formActualizar: FormGroup | any;
-  /* public formActualizarId: FormGroup | any; */
-  /* name = new FormControl('');
-  Fecha = new FormControl('');
-  Cliente = new FormControl(0);
-  Nombre_Cliente = new FormControl('');
-  Direccion_Cliente = new FormControl('');
-  RUC_Cliente = new FormControl('');
-  Sub_Total = new FormControl(0);
-  Iva_Cliente = new FormControl(0);
-  Total_Cliente = new FormControl(0); */
-  /* name: string = ''; */
 
   constructor(
     private apiService: ApiServiceGetService,
@@ -51,9 +46,6 @@ export class FacturacionComponent implements OnInit {
     this.formDelete = this.formBuildeer.group({
       Id_factura: '',
     });
-    /* this.formActualizarId = this.formBuildeer.group({
-      Id_factura: '',
-    }); */
     this.formActualizar = this.formBuildeer.group({
       Id_factura: '',
       Fecha: '',
@@ -65,45 +57,17 @@ export class FacturacionComponent implements OnInit {
       Iva_Cliente: 0,
       Total_Cliente: 0,
     });
-    /* this.apiService.getUsuarios().subscribe((data: any[]) => {
-      this.facturas = data;
-    }); */
   }
 
-  /* onSubmit(f: NgForm) {
-    const factura = {
-      FechaEmision: f.value,
-      IdCliente: f.value,
-      NombreCliente: f.value,
-      DireccionCliente: f.value,
-      RucCliente: f.value,
-      Subtotal: f.value,
-      Iva: f.value,
-      Total: f.value,
-    };
-    this.apiService.postFactura(factura).subscribe(response => {
-      this.facturas = response;
-    });
-    console.log(factura);
-    console.log(f.valid);
-  } */
-
   public CargarData(){
-    this.apiService.getFacturas().subscribe(respuesta => {
+    this.apiService.getFacturas().subscribe((respuesta:any) => {
+      this.dataSource = new MatTableDataSource<any>(respuesta);
       this.facturas = respuesta;
       console.log(respuesta);
     })
   }
 
   public EnviarData() {
-    /* let Fecha: String = '';
-    let Cliente: Number = 0;
-    let Nombre_Cliente: String = '';
-    let Direccion_Cliente: String = '';
-    let RUC_Cliente: String = '';
-    let Sub_Total: Number = 0;
-    let Iva_Cliente: Number = 0;
-    let Total_Cliente: Number = 0; */
     const factura = {
       FechaEmision: this.form.value.Fecha,
       IdCliente: this.form.value.Cliente,
@@ -117,6 +81,7 @@ export class FacturacionComponent implements OnInit {
 
     this.apiService.postFactura(factura).subscribe(response => {
       this.facturas = response;
+      this.CargarData();
     });
   }
 
@@ -124,6 +89,7 @@ export class FacturacionComponent implements OnInit {
     const FacturaId = this.formDelete.value.Id_factura; // Id de la factura que deseas eliminar
 
     this.apiService.deleteFactura(FacturaId).subscribe(response => {
+      this.CargarData();
       console.log('Factura eliminada exitosamente', response);
     }, error => {
       console.error('Error al eliminar la factura', error);
@@ -145,16 +111,11 @@ export class FacturacionComponent implements OnInit {
 
     this.apiService.patchFactura(FacturaId,factura).subscribe(response => {
       this.facturas = response;
+      this.CargarData();
       console.log('Factura actualizada exitosamente', response);
     }, error => {
       console.error('Error al actualizada la factura', error);
     });
   }
-
-  /* public EnviarData(){
-    this.apiService.postFactura({
-
-    })
-  } */
 
 }
