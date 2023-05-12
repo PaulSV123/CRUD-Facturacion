@@ -3,96 +3,38 @@
 
 <body>
 
-  <!-- <form (submit)="enviarDatos()">
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" [(ngModel)]="nombre">
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email">
-    </div>
-    <button type="submit">Enviar</button>
-  </form>
-
-  <p>Nombre ingresado: {{ nombre }}</p>
-  <p>Email ingresado: {{ email }}</p> -->
-
-  <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-    <div>
-      <label for="FechaEmision">Fecha de Emision:</label>
-      <input name="FechaEmision" ngModel required #first="ngModel">
-    </div>
-    <div>
-      <label for="IdCliente">Id del Cliente:</label>
-      <input type="number" name="IdCliente" ngModel>
-    </div>
-    <div>
-      <label for="NombreCliente">Nombre del Cliente:</label>
-      <input name="NombreCliente" ngModel>
-    </div>
-    <div>
-      <label for="DireccionCliente">Direccion del Cliente:</label>
-      <input name="DireccionCliente" ngModel>
-    </div>
-    <div>
-      <label for="RucCliente">RUC:</label>
-      <input name="RucCliente" ngModel>
-    </div>
-    <div>
-      <label for="Subtotal">Subtotal:</label>
-      <input type="number" name="Subtotal" ngModel>
-    </div>
-    <div>
-      <label for="Iva">Iva:</label>
-      <input type="number" name="Iva" ngModel>
-    </div>
-    <div>
-      <label for="Total">Total:</label>
-      <input type="number" name="Total" ngModel>
-    </div>
-    <button type="submit">Enviar</button>
-  </form>
-
-  <p>First name value: {{ first.value }}</p>
-  <p>First name valid: {{ first.valid }}</p>
-  <p>Form value: {{ f.value | json }}</p>
-  <p>Form valid: {{ f.valid }}</p> -->
-
   <form [formGroup]="form" (submit)="EnviarData()">
     <div class="form-group">
-      <!-- <textarea formControlName="Fecha">
-      </textarea> -->
       <div>
-        <label for="Fecha">Fecha:</label>
+        <label for="Fecha">Fecha de la Factura:</label>
         <input type="text" id="Fecha" formControlName="Fecha">
       </div>
       <div>
-        <label for="Cliente">Cliente:</label>
+        <label for="Cliente">Numero del Cliente:</label>
         <input type="number" id="Cliente" formControlName="Cliente">
       </div>
       <div>
-        <label for="Nombre_Cliente">Nombre_Cliente:</label>
+        <label for="Nombre_Cliente">Nombre del Cliente:</label>
         <input type="text" id="Nombre_Cliente" formControlName="Nombre_Cliente">
       </div>
       <div>
-        <label for="Direccion_Cliente">Direccion_Cliente:</label>
+        <label for="Direccion_Cliente">Direccion del Cliente:</label>
         <input type="text" id="Direccion_Cliente" formControlName="Direccion_Cliente">
       </div>
       <div>
-        <label for="RUC_Cliente">RUC_Cliente:</label>
+        <label for="RUC_Cliente">RUC del Cliente:</label>
         <input type="text" id="RUC_Cliente" formControlName="RUC_Cliente">
       </div>
       <div>
-        <label for="Sub_Total">Sub_Total:</label>
+        <label for="Sub_Total">SubTotal:</label>
         <input type="number" id="Sub_Total" formControlName="Sub_Total">
       </div>
       <div>
-        <label for="Iva_Cliente">Iva_Cliente:</label>
+        <label for="Iva_Cliente">Iva:</label>
         <input type="number" id="Iva_Cliente" formControlName="Iva_Cliente">
       </div>
       <div>
-        <label for="Total_Cliente">Total_Cliente:</label>
+        <label for="Total_Cliente">Total:</label>
         <input type="number" id="Total_Cliente" formControlName="Total_Cliente">
       </div>
       <div>
@@ -105,8 +47,6 @@
 
   <form [formGroup]="formDelete" (submit)="eliminarFactura()">
     <div class="form-group">
-      <!-- <textarea formControlName="Fecha">
-      </textarea> -->
       <div>
         <label for="Id_factura">ID de la Factura:</label>
         <input type="text" id="Id_factura" formControlName="Id_factura">
@@ -116,10 +56,6 @@
       </div>
     </div>
   </form>
-
-  <!-- <button (click)="EnviarData()">Crear Factura</button> -->
-
-  <!-- <button (click)="eliminarFactura()">Eliminar Factura</button> -->
 
   <br/>
 
@@ -138,27 +74,27 @@
         <input type="number" id="Cliente" formControlName="Cliente">
       </div>
       <div>
-        <label for="Nombre_Cliente">Nombre_Cliente:</label>
+        <label for="Nombre_Cliente">Nombre del Cliente:</label>
         <input type="text" id="Nombre_Cliente" formControlName="Nombre_Cliente">
       </div>
       <div>
-        <label for="Direccion_Cliente">Direccion_Cliente:</label>
+        <label for="Direccion_Cliente">Direccion del Cliente:</label>
         <input type="text" id="Direccion_Cliente" formControlName="Direccion_Cliente">
       </div>
       <div>
-        <label for="RUC_Cliente">RUC_Cliente:</label>
+        <label for="RUC_Cliente">RUC del Cliente:</label>
         <input type="text" id="RUC_Cliente" formControlName="RUC_Cliente">
       </div>
       <div>
-        <label for="Sub_Total">Sub_Total:</label>
+        <label for="Sub_Total">SubTotal:</label>
         <input type="number" id="Sub_Total" formControlName="Sub_Total">
       </div>
       <div>
-        <label for="Iva_Cliente">Iva_Cliente:</label>
+        <label for="Iva_Cliente">Iva:</label>
         <input type="number" id="Iva_Cliente" formControlName="Iva_Cliente">
       </div>
       <div>
-        <label for="Total_Cliente">Total_Cliente:</label>
+        <label for="Total_Cliente">Total:</label>
         <input type="number" id="Total_Cliente" formControlName="Total_Cliente">
       </div>
       <div>
@@ -173,7 +109,6 @@
       <div style="text-align: center;">
         <h3 *ngFor="let Factura_Id of facturas">Factura {{ Factura_Id.Id }} </h3>
       </div>
-      <!-- <li *ngFor="let Factura_Id of facturas">{{ Factura_Id.Id }}</li> -->
       <li *ngFor="let Factura_FechaEmision of facturas">{{ Factura_FechaEmision.FechaEmision }}</li>
       <li *ngFor="let Factura_IdCliente of facturas">{{ Factura_IdCliente.IdCliente }}</li>
       <li *ngFor="let Factura_NombreCliente of facturas">{{ Factura_NombreCliente.NombreCliente }}</li>
@@ -182,7 +117,6 @@
       <li *ngFor="let Factura_Subtotal of facturas">{{ Factura_Subtotal.Subtotal }}</li>
       <li *ngFor="let Factura_Iva of facturas">{{ Factura_Iva.Iva }}</li>
       <li *ngFor="let Factura_Total of facturas">{{ Factura_Total.Total }}</li>
-      <!-- <a href="#">Enlace</a> -->
     </div>
   </div>
 

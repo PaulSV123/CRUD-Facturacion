@@ -1,13 +1,12 @@
 <!-- Creacion del header -->
 <app-header></app-header>
-<p>detalles works!</p>
 
 <body>
 
-  <!-- <form [formGroup]="form" (submit)="EnviarDataDetalles()">
+  <form [formGroup]="form" (submit)="EnviarDataDetalles()">
     <div class="form-group">
       <div>
-        <label for="Descripcion">Descripcion:</label>
+        <label for="Descripcion">Descripcion de la Factura:</label>
         <input type="text" id="Descripcion" formControlName="Descripcion">
       </div>
       <div>
@@ -30,9 +29,7 @@
         <button class="button">Crear Detalles de la Factura</button>
       </div>
     </div>
-  </form> -->
-
-  <button (click)="EnviarDataDetalles()">Crear Factura Detalle</button>
+  </form>
 
   <br/>
 
@@ -48,17 +45,45 @@
     </div>
   </form>
 
+  <br/>
+
+  <form [formGroup]="formActualizar" (submit)="actualizarFacturaDetalles()">
+    <div class="form-group">
+      <div>
+        <label for="Id_factura_detalle">ID de la Factura detalle:</label>
+        <input type="text" id="Id_factura_detalle" formControlName="Id_factura_detalle">
+      </div>
+      <div>
+        <label for="Descripcion">Descripcion de la Factura:</label>
+        <input type="text" id="Descripcion" formControlName="Descripcion">
+      </div>
+      <div>
+        <label for="PrecioUnitario">Precio Unitario:</label>
+        <input type="number" id="PrecioUnitario" formControlName="PrecioUnitario">
+      </div>
+      <div>
+        <label for="Cantidad">Cantidad:</label>
+        <input type="number" id="Cantidad" formControlName="Cantidad">
+      </div>
+      <div>
+        <label for="Subtotal">SubTotal:</label>
+        <input type="number" id="Subtotal" formControlName="Subtotal">
+      </div>
+      <div>
+        <button class="button">Actualizar Detalles de la Factura</button>
+      </div>
+    </div>
+  </form>
+
   <div class="card">
     <div class="card-content">
       <div style="text-align: center;">
         <h3 *ngFor="let Factura_Id of facturas_detalles">Factura {{ Factura_Id.Id }} </h3>
       </div>
-      <!-- <li *ngFor="let Factura_Id of facturas">{{ Factura_Id.Id }}</li> -->
       <li *ngFor="let Descripcion_Detalle of facturas_detalles">{{ Descripcion_Detalle.Descripcion }}</li>
       <li *ngFor="let PrecioUnitario_Detalle of facturas_detalles">{{ PrecioUnitario_Detalle.PrecioUnitario }}</li>
       <li *ngFor="let Cantidad_Detalle of facturas_detalles">{{ Cantidad_Detalle.Cantidad }}</li>
       <li *ngFor="let Subtotal_Detalle of facturas_detalles">{{ Subtotal_Detalle.Subtotal }}</li>
-      <!-- <a href="#">Enlace</a> -->
     </div>
   </div>
 </body>

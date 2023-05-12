@@ -40,7 +40,6 @@ export class DetallesComponent implements OnInit {
       PrecioUnitario: 0,
       Cantidad: 0,
       Subtotal: 0,
-      FacturaId: '',
     });
   }
 
@@ -52,25 +51,17 @@ export class DetallesComponent implements OnInit {
   }
 
   public EnviarDataDetalles() {
-    /* const factura_detalle = {
-      Descripcion_Detalle: this.form.value.Descripcion,
-      PrecioUnitario_Detalle: this.form.value.PrecioUnitario,
-      Cantidad_Detalle: this.form.value.Cantidad,
-      Subtotal_Detalle: this.form.value.Subtotal,
-      FacturaId_Detalle: this.form.value.FacturaId,
-    }; */
-
     const factura_detalle = {
-      Descripcion_Detalle: "Hola ingreso",
-      PrecioUnitario_Detalle: 2,
-      Cantidad_Detalle: 2,
-      Subtotal_Detalle: 4,
-      FacturaId_Detalle: "cb1d4564-0d47-4e92-9596-864f6b953a23",
+      Descripcion: this.form.value.Descripcion,
+      PrecioUnitario: this.form.value.PrecioUnitario,
+      Cantidad: this.form.value.Cantidad,
+      Subtotal: this.form.value.Subtotal,
+      FacturaId: this.form.value.FacturaId,
     };
 
     this.apiService.postFacturaDetalles(factura_detalle).subscribe(response => {
       this.facturas_detalles = response;
-      console.log('Factura agregada exitosamente', response);
+      console.log('Factura Detalle agregada exitosamente', response);
     }, error => {
       console.error('Error al agregada la factura', error);
     });
@@ -89,14 +80,13 @@ export class DetallesComponent implements OnInit {
   public actualizarFacturaDetalles() {
     const FacturaId = this.formActualizar.value.Id_factura_detalle;
     const factura = {
-      Descripcion_Detalle: this.form.value.Descripcion,
-      PrecioUnitario_Detalle: this.form.value.PrecioUnitario,
-      Cantidad_Detalle: this.form.value.Cantidad,
-      Subtotal_Detalle: this.form.value.Subtotal,
-      FacturaId_Detalle: this.form.value.FacturaId,
+      Descripcion: this.formActualizar.value.Descripcion,
+      PrecioUnitario: this.formActualizar.value.PrecioUnitario,
+      Cantidad: this.formActualizar.value.Cantidad,
+      Subtotal: this.formActualizar.value.Subtotal,
     };
 
-    this.apiService.patchFactura(FacturaId,factura).subscribe(response => {
+    this.apiService.patchFacturaDetalles(FacturaId,factura).subscribe(response => {
       this.facturas_detalles = response;
       console.log('Factura actualizada exitosamente', response);
     }, error => {

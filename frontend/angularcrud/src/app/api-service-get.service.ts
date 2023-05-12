@@ -34,6 +34,7 @@ export class ApiServiceGetService {
   }
   /* Metodo Posts /facturacion/detalles */
   public postFacturaDetalles(body: any){
+    console.log(body);
     return this.http.post(`${this.baseUrl}/detalle`,body);
   }
   /* Metodo Delete /facturacion/detalles */
@@ -42,6 +43,7 @@ export class ApiServiceGetService {
   }
   /* Meotodo Patch /facturacion/detalles */
   public patchFacturaDetalles(id: string,body: any){
+    console.log(body);
     return this.http.patch(`${this.baseUrl}/detalle/${id}`,body);
   }
 
